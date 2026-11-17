@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сервис бронирования — Главная</title>
+    <title>Гостиница «Сладкие сны»</title>
     <style>
         :root {
-            --primary-color: #0052cc;
-            --text-color: #333;
-            --bg-color: #f5f5f5;
-            --footer-bg: #222;
-            --footer-text: #ccc;
+            --primary-color: #2c5282;
+            --bg-color: #f7fafc;
+            --text-color: #2d3748;
+            --footer-bg: #2d3748;
+            --footer-text: #a0aec0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: Arial, sans-serif; line-height: 1.6; color: var(--text-color); background-color: var(--bg-color); }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        
+
         /* Шапка */
-        header { background: white; padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header { background: white; padding: 1rem 0; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
         header .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); }
         nav a { margin-left: 20px; text-decoration: none; color: var(--text-color); font-weight: bold; }
@@ -28,52 +28,53 @@
         .page.active { display: block; }
 
         /* Главная страница */
-        .hero { text-align: center; padding: 4rem 0; }
+        .hero { text-align: center; padding: 4rem 0; background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); }
         .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
         .btn { display: inline-block; padding: 12px 30px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; margin-top: 1rem; }
-        .btn:hover { background: #0044b3; }
+        .btn:hover { background: #2c5282; opacity: 0.9; }
 
         /* Фильтры каталога */
-        .filters { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .filters h2 { margin-bottom: 15px; }
-        label { margin-right: 15px; }
-        .filter-btns { margin-top: 15px; }
-        .filter-btns button { padding: 8px 15px; border: 1px solid #ccc; background: white; cursor: pointer; margin-right: 10px; }
+        .filters { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        .filters h2 { margin-right: 15px; margin-bottom: 10px; }
+        .filter-btns { margin-left: auto; display: flex; gap: 10px; }
+        .filter-btns button { padding: 8px 15px; border: 1px solid #ccc; background: white; cursor: pointer; }
         .filter-btns button:hover { background: #f0f0f0; }
 
         /* Сетка номеров */
         .rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .room-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .room-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,.1); transition: transform 0.2s; }
         .room-card:hover { transform: translateY(-5px); }
         .room-card img { width: 100%; height: 180px; object-fit: cover; }
-        .room-card h3 { padding: 15px; }
-        .room-card .price { font-size: 1.2rem; font-weight: bold; color: var(--primary-color); padding: 0 15px; }
-        .room-card p { padding: 0 15px 15px; color: #666; }
-        .book-btn { width: 100%; padding: 15px; border: none; background: var(--primary-color); color: white; font-size: 1rem; cursor: pointer; }
-        .book-btn:hover { background: #0044b3; }
+        .room-card h3 { padding: 15px; margin: 0; }
+        .room-card .price { font-size: 1.3rem; font-weight: bold; color: var(--primary-color); padding: 0 15px; }
+        .room-card p { padding: 0 15px 15px; color: #718096; }
+        .book-btn { width: 100%; padding: 15px; border: none; background: var(--primary-color); color: white; font-size: 1rem; cursor: pointer; border-radius: 0 0 8px 8px; }
+        .book-btn:hover { background: #2c5282; opacity: 0.9; }
 
         /* Форма бронирования */
         #bookingForm { background: white; padding: 30px; border-radius: 8px; max-width: 600px; margin: 0 auto; }
         .form-row { display: flex; gap: 20px; }
         .form-group { margin-bottom: 20px; display: flex; flex-direction: column; }
         .form-group label { margin-bottom: 5px; font-weight: bold; }
-        .form-group input { padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
+        .form-group input { padding: 12px; border: 1px solid #cbd5e0; border-radius: 5px; font-size: 1rem; }
         .form-group input:focus { outline: none; border-color: var(--primary-color); }
-        .form-group small { color: #888; font-size: 0.85rem; margin-top: 3px; }
+        .form-group small { color: #718096; font-size: 0.85rem; margin-top: 3px; }
         #bookingForm button { width: 100%; padding: 15px; background: var(--primary-color); color: white; border: none; border-radius: 5px; font-size: 1.1rem; cursor: pointer; }
-        #bookingForm button:hover { background: #0044b3; }
+        #bookingForm button:hover { background: #2c5282; }
 
         /* Подвал */
         footer { background: var(--footer-bg); color: var(--footer-text); padding: 2rem 0; margin-top: 3rem; }
-        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; text-align: center; }
         footer h4 { color: white; margin-bottom: 10px; }
         footer a { color: var(--footer-text); }
 
         /* Адаптивность */
         @media (max-width: 768px) {
-            header .container { flex-direction: column; text-align: center; }
+            header .container { flex-direction: column; text-align: center; gap: 10px; }
+            nav a { margin: 0 10px; }
+            .filter-btns { margin-left: 0; }
             .form-row { flex-direction: column; }
-            footer .container { flex-direction: column; text-align: center; }
+            footer .container { flex-direction: column; }
         }
     </style>
 </head>
@@ -82,12 +83,11 @@
 <!-- Шапка (единая для всех страниц) -->
 <header>
     <div class="container">
-        <div class="logo">Гостиница «Вектор»</div>
-        <div class="slogan">Ваш комфорт в центре событий</div>
+        <div class="logo">Сладкие сны</div>
+        <div class="slogan">Ваш лучший отдых</div>
         <nav>
             <a href="#" onclick="showPage('home')" id="link-home">Главная</a>
             <a href="#" onclick="showPage('catalog')" id="link-catalog">Каталог</a>
-            <a href="#" onclick="showPage('booking')" id="link-booking">Бронирование</a>
         </nav>
     </div>
 </header>
@@ -95,7 +95,7 @@
 <!-- СТРАНИЦА 1: Главная -->
 <div id="page-home" class="page active">
     <div class="hero">
-        <h1>Добро пожаловать!</h1>
+        <h1>Гостиница «Сладкие сны»</h1>
         <p>Выберите подходящий номер для вашего отдыха.</p>
         <a href="#" onclick="showPage('catalog')" class="btn">Смотреть каталог</a>
     </div>
@@ -118,47 +118,48 @@
         </section>
 
         <section class="rooms-grid" id="roomsGrid">
+            <!-- Данные номеров (имитация базы данных) -->
             <div class="room-card" data-category="standard">
                 <img src="https://placehold.co/300x200/E2E8F0/334155?text=Стандартный" alt="Стандартный">
                 <h3>Стандартный</h3>
                 <p class="price">3 500 ₽/сутки</p>
                 <p>2 места | 18 м²</p>
-                <button class="book-btn" onclick="goToBooking('Стандартный')">Забронировать</button>
+                <button class="book-btn" onclick="openBooking('Стандартный', 3500)">Забронировать</button>
             </div>
             <div class="room-card" data-category="studio">
                 <img src="https://placehold.co/300x200/FAFAFA/64748B?text=Студия" alt="Студия">
                 <h3>Студия</h3>
                 <p class="price">5 000 ₽/сутки</p>
                 <p>2 места | 25 м²</p>
-                <button class="book-btn" onclick="goToBooking('Студия')">Забронировать</button>
+                <button class="book-btn" onclick="openBooking('Студия', 5000)">Забронировать</button>
             </div>
             <div class="room-card" data-category="luxe">
                 <img src="https://placehold.co/300x200/FFFBEB/64748B?text=Люкс" alt="Люкс">
                 <h3>Люкс</h3>
                 <p class="price">8 000 ₽/сутки</p>
                 <p>2 места | 35 м²</p>
-                <button class="book-btn" onclick="goToBooking('Люкс')">Забронировать</button>
+                <button class="book-btn" onclick="openBooking('Люкс', 8000)">Забронировать</button>
             </div>
             <div class="room-card" data-category="standard">
                 <img src="https://placehold.co/300x200/E2E8F0/334155?text=Стандартный" alt="Стандартный">
-                <h3>Стандартный</h3>
-                <p class="price">3 500 ₽/сутки</p>
-                <p>2 места | 18 м²</p>
-                <button class="book-btn" onclick="goToBooking('Стандартный')">Забронировать</button>
+                <h3>Стандартный (2 этаж)</h3>
+                <p class="price">3 800 ₽/сутки</p>
+                <p>2 места | 20 м²</p>
+                <button class="book-btn" onclick="openBooking('Стандартный (2 этаж)', 3800)">Забронировать</button>
             </div>
             <div class="room-card" data-category="studio">
                 <img src="https://placehold.co/300x200/FAFAFA/64748B?text=Студия" alt="Студия">
-                <h3>Студия</h3>
-                <p class="price">5 000 ₽/сутки</p>
-                <p>2 места | 25 м²</p>
-                <button class="book-btn" onclick="goToBooking('Студия')">Забронировать</button>
+                <h3>Студия с видом</h3>
+                <p class="price">5 500 ₽/сутки</p>
+                <p>2 места | 28 м²</p>
+                <button class="book-btn" onclick="openBooking('Студия с видом', 5500)">Забронировать</button>
             </div>
             <div class="room-card" data-category="luxe">
                 <img src="https://placehold.co/300x200/FFFBEB/64748B?text=Люкс" alt="Люкс">
-                <h3>Люкс</h3>
-                <p class="price">8 000 ₽/сутки</p>
-                <p>2 места | 35 м²</p>
-                <button class="book-btn" onclick="goToBooking('Люкс')">Забронировать</button>
+                <h3>Президентский люкс</h3>
+                <p class="price">12 000 ₽/сутки</p>
+                <p>2 места | 50 м²</p>
+                <button class="book-btn" onclick="openBooking('Президентский люкс', 12000)">Забронировать</button>
             </div>
         </section>
     </div>
@@ -167,12 +168,13 @@
 <!-- СТРАНИЦА 3: Бронирование -->
 <div id="page-booking" class="page">
     <div class="container">
-        <h1>Бронирование номера</h1>
+        <h1 id="bookingTitle">Бронирование номера</h1>
         <p>Заполните данные для оформления заявки.</p>
         
-        <form id="bookingForm">
+        <form id="bookingForm" novalidate>
             <input type="hidden" id="roomCategory" name="roomCategory">
-            
+            <input type="hidden" id="roomPrice" name="roomPrice">
+
             <div class="form-group">
                 <label for="name">Имя *</label>
                 <input type="text" id="name" name="name" required pattern="^[А-Яа-яЁё\s\.-]+$" placeholder="Иван">
@@ -209,6 +211,7 @@
             <button type="submit">Отправить заявку</button>
         </form>
 
+        <!-- Блок сообщения об успехе -->
         <div id="successMessage" style="display: none; text-align: center; padding: 2rem;">
             <h2 style="color: green;">Заявка успешно отправлена!</h2>
             <p>Наш администратор свяжется с вами для подтверждения.</p>
@@ -220,25 +223,21 @@
 <!-- Подвал (единая для всех страниц) -->
 <footer>
     <div class="container">
-        <div class="footer-col"><h4>Адрес</h4><p>г. Москва, ул. Центральная, д. 10</p></div>
-        <div class="footer-col"><h4>Режим работы</h4><p>Круглосуточно</p></div>
-        <div class="footer-col"><h4>Контакты</h4><p>+7 (495) 000-00-00</p><p>info@hotel-vector.ru</p></div>
+        <div><h4>Адрес</h4>г. Москва, ул. Снов, д. 1</div>
+        <div><h4>Режим работы</h4>Круглосуточно</div>
+        <div><h4>Контакты</h4>+7 (495) 000-00-00<br>info@sweet-dreams.ru</div>
     </div>
 </footer>
 
 <script>
-    // --- НАВИГАЦИЯ МЕЖДУ СТРАНИЦАМИ ---
+    // --- НАВИГАЦИЯ ---
     function showPage(pageName) {
-        // Скрываем все страницы
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        // Снимаем активные ссылки
         document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
         
-        // Показываем нужную
         document.getElementById('page-' + pageName).classList.add('active');
         document.getElementById('link-' + pageName).classList.add('active');
 
-        // Если переходим на бронирование, сбрасываем форму
         if (pageName === 'booking') {
             document.getElementById('bookingForm').reset();
             document.getElementById('bookingForm').style.display = 'block';
@@ -246,7 +245,7 @@
         }
     }
 
-    // --- ЛОГИКА КАТАЛОГА ---
+    // --- ФИЛЬТРАЦИЯ КАТАЛОГА ---
     function applyFilter() {
         const checkboxes = document.querySelectorAll('#filterForm input[name="category"]:checked');
         const selectedCategories = Array.from(checkboxes).map(cb => cb.value);
@@ -266,23 +265,40 @@
         document.querySelectorAll('.room-card').forEach(card => card.style.display = 'block');
     }
 
-    function goToBooking(category) {
+    // --- БРОНИРОВАНИЕ ---
+    function openBooking(category, price) {
         showPage('booking');
         document.getElementById('roomCategory').value = category;
+        document.getElementById('roomPrice').value = price;
+        document.getElementById('bookingTitle').textContent = 'Бронирование: ' + category;
     }
 
-    // --- ЛОГИКА ФОРМЫ БРОНИРОВАНИЯ ---
+    // Маска ввода телефона
     const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function (e) {
-        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-        e.target.value = '+7(' + (x[1] ? x[1] : '') + ')' + (x[2] ? x[2] : '') + '-' + (x[3] ? x[3] : '') + '-' + (x[4] ? x[4] : '');
-    });
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+            e.target.value = '+7(' + (x[1] ? x[1] : '') + ')' + (x[2] ? x[2] : '') + '-' + (x[3] ? x[3] : '') + '-' + (x[4] ? x[4] : '');
+        });
+    }
 
+    // Валидация и отправка формы
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
         e.preventDefault(); 
-        // Проверка HTML5 (required, pattern) проходит автоматически браузером
-        document.getElementById('bookingForm').style.display = 'none';
-        document.getElementById('successMessage').style.display = 'block';
+        
+        // Проверка дат
+        const checkin = document.getElementById('checkin').value;
+        const checkout = document.getElementById('checkout').value;
+        if (checkout <= checkin) {
+            alert('Дата выезда должна быть позже даты заезда');
+            return;
+        }
+
+        // Если браузерная валидация пройдена
+        if (this.checkValidity()) {
+            this.style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        }
     });
 </script>
 
